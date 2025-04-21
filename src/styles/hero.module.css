@@ -1,0 +1,143 @@
+:root {
+  --bg-black:    #000;
+  --accent-pink: #ff1ec2;
+  --white:       #fff;
+}
+
+/* full‑screen reset */
+html, body, #__next {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg-black);
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: visible;
+}
+
+.bgPattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,30,194,0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.2;
+}
+
+.content {
+  position: relative;
+  text-align: center;
+  color: var(--white);
+  padding: 3rem 2rem;
+  backdrop-filter: blur(8px);
+  animation: fadeInScale 0.8s ease-out both;
+}
+
+.title {
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: bold;
+  margin: 0 0 1rem;
+  line-height: 1;
+}
+
+/* wave + glow on each letter */
+.wave {
+  display: inline-block;
+  color: var(--accent-pink);
+  animation:
+    wave 1.2s ease-in-out infinite,
+    glow 2s ease-in-out infinite alternate;
+}
+
+/* pop‑in for “.pop” */
+.pop {
+  display: inline-block;
+  color: var(--white);
+  opacity: 0;
+  transform: scale(0.8);
+  animation: popIn 0.5s ease-out forwards 0.8s;
+}
+
+.subtitle {
+  font-size: 1.75rem;
+  margin-bottom: 2rem;
+  opacity: 0.85;
+  animation: slideInUp 0.8s ease-out both;
+  animation-delay: 0.5s;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: var(--white);
+  color: var(--accent-pink);
+  font-weight: 600;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+  margin-top: 2.5rem;
+  animation: popIn 0.8s ease-out both;
+  animation-delay: 1s;
+}
+
+.cta:hover {
+  transform: scale(1.07);
+  background: var(--accent-pink);
+  color: var(--white);
+  box-shadow:
+    0 0 8px var(--accent-pink),
+    0 0 16px rgba(255,30,194,0.6),
+    0 4px 24px rgba(0,0,0,0.2);
+}
+
+.cta .icon {
+  transition: transform 0.3s ease;
+}
+
+.cta:hover .icon {
+  transform: translateX(8px);
+}
+
+.cta:hover .icon {
+  transform: translateX(6px);
+}
+
+/* keyframes */
+@keyframes wave {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px var(--accent-pink), 0 0 10px var(--accent-pink);
+  }
+  to {
+    text-shadow: 0 0 15px var(--accent-pink), 0 0 25px var(--accent-pink);
+  }
+}
+
+@keyframes popIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(2rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
